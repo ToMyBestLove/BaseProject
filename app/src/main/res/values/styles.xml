@@ -1,0 +1,15 @@
+<resources>
+
+
+    <!-- 解决黑白屏启动 -->
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:scaleType">centerCrop</item>
+<!--        <item name="android:windowBackground">@mipmap/bg_splash</item>-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+</resources>
