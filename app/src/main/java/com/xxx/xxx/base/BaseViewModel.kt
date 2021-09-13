@@ -88,7 +88,7 @@ open class BaseViewModel : ViewModel(), ViewModelLifecycle,
     }
 
     override fun uiShowToast(@StringRes textId: Int) {
-        uiToast.postValue(AppApplication.application.getString(textId))
+        uiToast.postValue(BaseApplication.application.getString(textId))
     }
 
     override fun uiShowNetworkError() {

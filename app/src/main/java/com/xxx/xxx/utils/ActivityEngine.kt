@@ -2,7 +2,7 @@ package com.xxx.xxx.utils
 
 import android.content.Context
 import android.content.Intent
-import com.xxx.xxx.MainActivity
+import com.xxx.xxx.activity.MainActivity
 
 /**
  * @author zed

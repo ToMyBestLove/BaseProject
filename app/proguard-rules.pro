@@ -19,3 +19,14 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#app
+-keep class com.xxx.xxx.bean.** {*;}
+-keep class com.xxx.xxx.databinding.** {*;}
+-keepclassmembers enum * { *; }
+
+#okhttp
+-dontwarn java.nio.**
+-dontwarn javax.annotation.Nullable
+-dontwarn javax.annotation.ParametersAreNonnullByDefault
+-dontwarn org.codehaus.**

@@ -1,4 +1,4 @@
-package com.xxx.xxx
+package com.xxx.xxx.activity
 
 import androidx.lifecycle.MutableLiveData
 import com.xxx.xxx.base.BaseViewModel

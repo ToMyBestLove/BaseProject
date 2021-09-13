@@ -10,7 +10,7 @@ import java.util.Stack
  * @date 10/26/20 8:02 PM
  * <p>
  */
-class AppApplication : Application() {
+class BaseApplication : Application() {
 
     companion object {
 
