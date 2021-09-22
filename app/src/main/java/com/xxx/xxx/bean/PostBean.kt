@@ -11,6 +11,7 @@ data class PostBean(
         val msg: String
 ) {
     class Data(
+
     )
 }
 

@@ -25,16 +25,34 @@ interface BaseView {
      * Show single dialog.
      */
     fun uiShowSingleDialog(
-            content: String,
-            single: String,
-            onSingleClick: (() -> Unit)? = null
+        content: String,
+        single: String,
+        onSingleClick: (() -> Unit)? = null
     )
 
     /**
      * Show single dialog.
      */
+    fun uiShowSingleDialog(
+        contentId: Int,
+        singleId: Int,
+        onSingleClick: (() -> Unit)? = null
+    )
+
+    /**
+     * Show ok cancel dialog
+     */
     fun uiShowOkCancelDialog(
         content: String, left: String, right: String,
+        onLeftClick: (() -> Unit)? = null,
+        onRightClick: (() -> Unit)? = null
+    )
+
+    /**
+     * Show ok cancel dialog
+     */
+    fun uiShowOkCancelDialog(
+        contentId: Int, leftId: Int, rightId: Int,
         onLeftClick: (() -> Unit)? = null,
         onRightClick: (() -> Unit)? = null
     )

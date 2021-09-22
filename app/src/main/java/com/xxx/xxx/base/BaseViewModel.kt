@@ -5,6 +5,7 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.*
 import com.xxx.xxx.api.ApiLiveData
 import com.xxx.xxx.utils.GlobalScopeUtils
+import kotlinx.coroutines.flow.MutableStateFlow
 
 /**
  * @author zed
@@ -60,8 +61,8 @@ open class BaseViewModel : ViewModel(), ViewModelLifecycle,
     /* --------- base ui behavior --------- */
 
     val uiLoading by lazy { MutableLiveData<Boolean>() }
-    val uiSingleDialog by lazy { MutableLiveData<Bundle>() }
-    val uiOkCancelDialog by lazy { MutableLiveData<Bundle>() }
+    val uiSingleDialog by lazy { MutableLiveData<LiveBean>() }
+    val uiOkCancelDialog by lazy { MutableLiveData<LiveBean>() }
     val uiToast by lazy { MutableLiveData<String>() }
     val uiShowNetworkError by lazy { MutableLiveData<String?>() }
 
@@ -70,7 +71,19 @@ open class BaseViewModel : ViewModel(), ViewModelLifecycle,
     }
 
     override fun uiShowSingleDialog(content: String, single: String, onSingleClick: (() -> Unit)?) {
-        //todo uiShowSingleDialog
+        uiSingleDialog.postValue(LiveBean().apply {
+            this.content = content
+            this.single = single
+            this.onSingleClick = onSingleClick
+        })
+    }
+
+    override fun uiShowSingleDialog(contentId: Int, singleId: Int, onSingleClick: (() -> Unit)?) {
+        uiSingleDialog.postValue(LiveBean().apply {
+            this.contentId = contentId
+            this.singleId = singleId
+            this.onSingleClick = onSingleClick
+        })
     }
 
     override fun uiShowOkCancelDialog(
@@ -80,7 +93,29 @@ open class BaseViewModel : ViewModel(), ViewModelLifecycle,
         onLeftClick: (() -> Unit)?,
         onRightClick: (() -> Unit)?
     ) {
-        //todo uiShowOkCancelDialog
+        uiOkCancelDialog.postValue(LiveBean().apply {
+            this.content = content
+            this.left = left
+            this.right = right
+            this.onLeftClick = onLeftClick
+            this.onRightClick = onRightClick
+        })
+    }
+
+    override fun uiShowOkCancelDialog(
+        contentId: Int,
+        leftId: Int,
+        rightId: Int,
+        onLeftClick: (() -> Unit)?,
+        onRightClick: (() -> Unit)?
+    ) {
+        uiOkCancelDialog.postValue(LiveBean().apply {
+            this.contentId = contentId
+            this.leftId = leftId
+            this.rightId = rightId
+            this.onLeftClick = onLeftClick
+            this.onRightClick = onRightClick
+        })
     }
 
     override fun uiShowToast(text: String) {

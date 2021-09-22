@@ -125,13 +125,21 @@ abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatAct
                 mLoadingDialog.dismiss()
             }
         }
-        //todo uiSingleDialog
         mViewModel.uiSingleDialog.observe(this) {
-
+            AllDialog(this).showSingleDialog(
+                content = it.content ?: getString(it.contentId ?: 0),
+                single = it.single ?: getString(it.singleId ?: 0),
+                onSingleClick = it.onSingleClick
+            )
         }
-        //todo uiOkCancelDialog
         mViewModel.uiOkCancelDialog.observe(this) {
-
+            AllDialog(this).showOkCancelDialog(
+                content = it.content ?: getString(it.contentId ?: 0),
+                left = it.left ?: getString(it.leftId ?: 0),
+                right = it.right ?: getString(it.rightId ?: 0),
+                onLeftClick = it.onLeftClick,
+                onRightClick = it.onRightClick,
+            )
         }
         mViewModel.uiToast.observe(this) {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
